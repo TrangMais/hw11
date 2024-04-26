@@ -24,22 +24,22 @@ public abstract class Course {
 	}
 	
 	// read a file => return an Array List
-	public ArrayList<Student> readDataFromFile() {				// return to listStudent (list of student # list of String) 
-		try {													// when coding, all of code lines should be in "try" so that "catch" can find all error occurred and return to null
-			ArrayList<Student> list = new ArrayList<Student>(); // create a empty string
-			File fileToRead = new File(fileName);				// read the file "be.txt"
+	public ArrayList<Student> readDataFromFile() {						// return to listStudent (list of student # list of String) 
+		try {										// when coding, all of code lines should be in "try" so that "catch" can find all error occurred and return to null
+			ArrayList<Student> list = new ArrayList<Student>(); 			// create a empty string
+			File fileToRead = new File(fileName);					// read the file "be.txt"
 			
 			// Imagine: Inside file "be.txt", there are two lines of student information
 			// "dung,090909,12/12/1991"
 			// "dung1,090909,12/12/1991"
-			Scanner scanInput = new Scanner(fileToRead);		// scanner to loop line-by-line in the file "be.txt"
+			Scanner scanInput = new Scanner(fileToRead);				// scanner to loop line-by-line in the file "be.txt"
 			while (scanInput.hasNextLine()) {					
 				String data = scanInput.nextLine();				// every data from line scanner with be A data in LIST
-				String [] elementArray = data.split(",");		// split function => will follow the "," and cut it and transfer the above STRING to INDEX of List
-																// after cutting, ARRAY will be ["dung" - INDEX 1, "090909" - INDEX 2, "12/12/1991" - INDEX 3]
+				String [] elementArray = data.split(",");			// split function => will follow the "," and cut it and transfer the above STRING to INDEX of List
+												// after cutting, ARRAY will be ["dung" - INDEX 1, "090909" - INDEX 2, "12/12/1991" - INDEX 3]
 				Student eachStudent = new Student(elementArray[0].trim(), elementArray[1].trim(), elementArray[2].trim()); 
-																// using trim() to cut down 2 side whitespace around the INDEX
-				list.add(eachStudent);							// add each student in the LIST
+												// using trim() to cut down 2 side whitespace around the INDEX
+				list.add(eachStudent);						// add each student in the LIST
 			}
 			return list;
 		} catch (FileNotFoundException e) {
